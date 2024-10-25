@@ -1,0 +1,22 @@
+.navigation {
+  display: flex;
+  justify-content: space-evenly;
+  background: #33b5e5;
+  padding: 10px 200px 10px 200px;
+}
+
+a {
+  color: #ffff;
+  font-weight: bold;
+}
+
+h1 {
+  padding: 10px 200px 10px 200px;
+  text-align: center;
+  color: #ffff;
+}
+
+.text {
+  font-family: -apple-system, system-ui, 'Segoe UI';
+  background: #33b5e5;
+}

@@ -1,0 +1,37 @@
+img {
+  border-radius: 10px;
+  width: 320px;
+}
+
+.select-input {
+  width: 108px;
+  margin-bottom: 8px;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.detail-item {
+  margin-left: 128px;
+  margin-right: 128px;
+}
+
+.custom-button {
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: #fff;
+  font-family: -apple-system, system-ui, 'Segoe UI';
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.text {
+  font-family: -apple-system, system-ui, 'Segoe UI';
+}

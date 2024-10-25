@@ -1,0 +1,122 @@
+<div class="text">
+  <div *ngIf="this.carts.length === 0">
+    <div class="empty-cart-message">
+      <div class="form-margin">
+        <h1>Cart is Empty!</h1>
+        <button class="custom-button" (click)="backToMain()">
+          Keep Shopping!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.carts.length !== 0">
+    <div class="cart-container">
+      <div class="cart-item-details">
+        <div
+          class="cart-item"
+          *ngFor="let cart of carts"
+          class="cart-container"
+        >
+          <img src="{{ cart.url }}" alt="product pic" class="img" />
+          <div class="cart-panel">
+            <h3>{{ cart.productName }}</h3>
+            <p>Price: {{ cart.productPrice }}</p>
+            <p>{{ cart.productDetails }}</p>
+            <p>
+              QTY:
+              <select
+                class="select-input"
+                name="number"
+                [(ngModel)]="cart.productQuantity"
+              >
+                <option
+                  *ngFor="let n of dropdown"
+                  [value]="n"
+                  [selected]="n === cart.productQuantity"
+                >
+                  {{ n }}
+                </option>
+              </select>
+            </p>
+
+            <button
+              class="custom-button"
+              (click)="removeItemFromCart(cart.productID)"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h1>Total Price: ${{ this.getTotalPrice() }}</h1>
+
+    <form #form="ngForm" (submit)="onSubmit()">
+      <h2>Shipping and Payment Details</h2>
+      <input
+        type="text"
+        name="Full Name"
+        required
+        minlength="1"
+        placeholder="Full Name"
+        [(ngModel)]="fullName"
+        (ngModelChange)="validateName()"
+      />
+      <br />
+      <input
+        type="text"
+        name="Address"
+        required
+        minlength="1"
+        placeholder="Shipping Address"
+        [(ngModel)]="address"
+        (ngModelChange)="validateAddress()"
+      />
+      <br />
+      <input
+        type="text"
+        name="cardNumber"
+        required
+        minlength="16"
+        placeholder="Card Number"
+        [(ngModel)]="cardNumber"
+        (ngModelChange)="validateCard()"
+      />
+      <br />
+      <input
+        type="text"
+        name="csv"
+        required
+        minlength="1"
+        placeholder="CSV"
+        [(ngModel)]="csv"
+        (ngModelChange)="validateCsv()"
+      />
+      <br />
+      <input
+        type="text"
+        name="expir"
+        required
+        minlength="1"
+        placeholder="Expir."
+        [(ngModel)]="expir"
+        (ngModelChange)="validateExpir()"
+      />
+      <br />
+      <input
+        type="Submit"
+        [disabled]="form.invalid"
+        value="Submit"
+        class="custom-button"
+      />
+    </form>
+
+    <div *ngIf="form.invalid">
+      <div class = "error-message">
+        Form is incomplete! Fields may not be left blank, credit card information must be valid.
+      </div>
+    </div>
+  </div>
+</div>
